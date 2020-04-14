@@ -34,13 +34,13 @@ MADDPG is a model free off-policy actor-critic multi-agent algorithm that learns
 
 The major benefit of MADDPG over DDPG is that it solves non-stationary environment problem that arises in multi-agent algorithms by using centralized critic and decentralized actor approach. Refer to the diagram below.
 
-![image-20200407135116052](images\image-20200407135116052.png)
+![image-20200407135116052](images/image-20200407135116052.png)
 
 Source: https://arxiv.org/pdf/1706.02275.pdf
 
 The algorithm is listed below:
 
-![image-20200407135738403](D:\DeepLearning\git\MultiAgentDDPG-Tennis\images\image-20200407135738403.png)
+![image-20200407135738403](images/image-20200407135738403.png)
 
 ### Repository
 
@@ -81,9 +81,9 @@ Agent:
 
 I started with DDPG pendulum as reference with two agents to train the Tennis environment. The model architecture consisted of 2 agents / 2 critics sharing the same experience replay buffer. The experience replay buffer contained the experiences of all the agents. The agents and critics are trained using all the experiences. The model for Actor and Critic consisted input size of 24 and two hidden units with  512  and 256 units that resulted in action size of 4.  The environment was solved in 306 episodes.
 
-![image-20200414105602908](D:\DeepLearning\git\MultiAgentDDPG-Tennis\images\image-20200414105602908.png)
+![image-20200414105602908](images/image-20200414105602908.png)
 
-![image-20200414105648574](D:\DeepLearning\git\MultiAgentDDPG-Tennis\images\image-20200414105648574.png)
+![image-20200414105648574](images/image-20200414105648574.png)
 
 
 
@@ -99,9 +99,9 @@ Using the above model, the environment was solved in 1627 episodes. The hyperpar
 
 
 
-![image-20200414110748149](D:\DeepLearning\git\MultiAgentDDPG-Tennis\images\image-20200414110748149.png)
+![image-20200414110748149](images/image-20200414110748149.png)
 
-![image-20200414110802063](D:\DeepLearning\git\MultiAgentDDPG-Tennis\images\image-20200414110802063.png)
+![image-20200414110802063](images/image-20200414110802063.png)
 
 This model will not generalize well as the agent is making decisions based on not only its state but also state from the other agents. Hence, I decided to implement MADDPG to solve the above environment.
 
@@ -111,9 +111,9 @@ To improvise approach 2, I implemented MADDPG where agent learns the policy by o
 
 Using the above model, the environment was solved in 1045 episodes. This is a significant improvement over Approach 2.
 
-![image-20200414124714837](D:\DeepLearning\git\MultiAgentDDPG-Tennis\images\image-20200414124714837.png)
+![image-20200414124714837](images/image-20200414124714837.png)
 
-![image-20200414084241521](\images\image-20200414084241521.png)
+![image-20200414084241521](images/image-20200414084241521.png)
 
 ### Hyperparameters and Tuning:
 
@@ -142,7 +142,7 @@ In terms of future work, I would tune the MADDPG with Prioritized Experience Rep
 
 The other algorithms that I would like to try are Multi Agent Proximal Policy Optimization (MAPPO) to avoid getting struck in saddle points and RHLC (Reinforcement Learning from Hierarchical Critics ref: https://arxiv.org/pdf/1902.03079.pdf) algorithm . RHLC is believed to speed up learning and each agent not only receives from local critic but also from global critic.  
 
-![image-20200414124138201](D:\DeepLearning\git\MultiAgentDDPG-Tennis\images\image-20200414124138201.png)
+![image-20200414124138201](images/image-20200414124138201.png)
 
 source:https://arxiv.org/pdf/1902.03079.pdf
 
@@ -152,7 +152,7 @@ Agent trained with MA-DDPG  with experience replay solved the environment in 104
 
 ##### MADDPG with  Experience Replay
 
-![image-20200414084241521](\images\image-20200414084241521.png)
+![image-20200414084241521](images/image-20200414084241521.png)
 
 
 
