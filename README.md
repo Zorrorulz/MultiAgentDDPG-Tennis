@@ -1,7 +1,7 @@
-# MultiAgentDDPG-Tennis
+# Multi-Agent Deep Deterministic Policy Gradient (MADDPG) -Tennis
 ### Overview
 
-This project was developed as part of Udacity Deep Reinforcement Learning Nanodegree course. This project solves Tennis environment by training the agent to using Multi Agent Deep Deterministic Policy Gradient (DDPG) algorithm. The environment is based on [Unity ML agents](https://github.com/Unity-Technologies/ml-agents). In this environment, two agents bounce a ball with the help of actions taken on the rackets. If an agent hits the ball, it receives a reward of +0.1. If agent does not hit the ball, it receives a reward of -0.01. The environment is considered solved if the agent can keep the ball in play and scores a reward of +0.5. 
+This project was developed as part of Udacity Deep Reinforcement Learning Nanodegree course. This project solves Tennis environment by training the agent to using Multi-Agent Deep Deterministic Policy Gradient (MADDPG) algorithm. The environment is based on [Unity ML agents](https://github.com/Unity-Technologies/ml-agents). In this environment, two agents bounce a ball with the help of actions taken on the rackets. If an agent hits the ball, it receives a reward of +0.1. If agent does not hit the ball, it receives a reward of -0.01. The environment is considered solved if the agent can keep the ball in play and scores a reward of +0.5. 
 
 ### Introduction
 
@@ -93,11 +93,15 @@ Then, place the file in the `p3_collab-compet/` folder in the DRLND GitHub repos
 
 ### Multi Agent Deep Deterministic Policy Gradient Algorithm
 
-Multi-Agent Deep Deterministic Policy Gradient Algorithm 
+Please refer to https://arxiv.org/pdf/1706.02275.pdf for understanding of Multi-Agent Deep Deterministic Policy Gradient Algorithm. 
+
+MADDPG is a model free off-policy actor-critic multi-agent algorithm that learns directly from observation spaces. Agent trains itself using the local observation and decides the next best course of action, while critic evaluates the quality of the action by looking at all the observations and actions taken by other agents.
 
 ![image-20200407135116052](images\image-20200407135116052.png)
 
 Source: https://arxiv.org/pdf/1706.02275.pdf
+
+The algorithm is listed below:
 
 ![image-20200407135738403](D:\DeepLearning\git\MultiAgentDDPG-Tennis\images\image-20200407135738403.png)
 
@@ -105,11 +109,21 @@ Source: https://arxiv.org/pdf/1706.02275.pdf
 
 The repository contains the below files:
 
-- ma_ddpg_tennis_PER.ipynb :  Model for Actor and Critic along with agent learns using Prioritized Experience Replay and OUNoise. Training the agent and testing the agent is implemented here.
-- checkpoint_actor_preplay.pth : Learned model weights for Actor with Prioritized replay
-- checkpoint_critic_preplay.pth : Learned model weights for Critic with Prioritized replay
+- final_maddpg_xreplay.ipynb :  Implementation of MADDPG with experienced replay buffer. Training the  agent is implemented here.
+
+- checkpoint_actor1_xreplay.pth : Learned model weights for Agent 1
+
+- checkpoint_actor2_xreplay.pth : Learned model weights for Agent 2 
+
+- checkpoint_critic1_xreplay.pth : Learned model weights for Critic 1
+
+- checkpoint_critic2_xreplay.pth : Learned model weights for Critic 2
+
 - images  directory: contains images used in documentation
-- multiple_agents: Please copy Tennis environment  to this location or modify the filepath in ma_ddpg_tennis_PER.ipynb to point to the correct location.
+
+- models directory : Contains other working models and work in progress environments used to solve the Tennis environment  
+
+  Before running the ipynb file,Please copy Tennis environment  to this location or modify the filepath in final_maddpg_xreplay.ipynb to point to the correct location.
 
 
 
@@ -118,10 +132,10 @@ The repository contains the below files:
 Pendulum-v0 environment with [Deep Deterministic Policy Gradients (DDPG)](https://github.com/udacity/deep-reinforcement-learning/blob/master/ddpg-pendulum/DDPG.ipynb) is used as reference  to build the model.  The model architecture that is used is:
 
 Actor:
-	Input(state size of 24) &rarr; Dense Layer(256) &rarr; RELU &rarr; Dense Layer(128) &rarr; RELU &rarr; Dense Layer( action size of 2) &rarr; TANH
+	Input(state size of 24) &rarr; Dense Layer(64) &rarr; RELU &rarr; Dense Layer(64) &rarr; RELU &rarr; Dense Layer( action size of 2) &rarr; TANH
 
 Critic:
-	Input(state size of 24) &rarr; Dense Layer(256) &rarr; RELU &rarr; Dense Layer(128) &rarr; RELU &rarr; Dense Layer( action size of 2) 
+	Input(state size of 48) &rarr; Dense Layer(64) &rarr; LeakyRELU & actions (4) &rarr; Dense Layer(64) &rarr; Leaky RELU &rarr;  Q value
 
 Agent:
 	Actor Local and Critic Local networks are trained and updates the Actor Target and Critic Target networks using weighting factor Tau.
@@ -130,11 +144,13 @@ Please refer to Report.md for more details on the model and parameters used for 
 
 ## Results:
 
-Results from MA DDPG training  with prioritized experience replay solved the environment in episodes.
+Agent trained with MA-DDPG  with experience replay solved the environment in 1045 episodes.
 
-##### MADDPG with Prioritized Experience Replay
+##### MADDPG with  Experience Replay
 
-![image-20200405013049322](D:\DeepLearning\git\ddpg_reinforcement_learning\images\image-20200405013049322.png)
+![image-20200414084241521](\images\image-20200414084241521.png)
+
+
 
 
 
