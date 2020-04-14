@@ -97,13 +97,13 @@ Please refer to https://arxiv.org/pdf/1706.02275.pdf for understanding of Multi-
 
 MADDPG is a model free off-policy actor-critic multi-agent algorithm that learns directly from observation spaces. Agent trains itself using the local observation and decides the next best course of action, while critic evaluates the quality of the action by looking at all the observations and actions taken by other agents.
 
-![image-20200407135116052](images\image-20200407135116052.png)
+![image-20200407135116052](images/image-20200407135116052.png)
 
 Source: https://arxiv.org/pdf/1706.02275.pdf
 
 The algorithm is listed below:
 
-![image-20200407135738403](D:\DeepLearning\git\MultiAgentDDPG-Tennis\images\image-20200407135738403.png)
+![image-20200407135738403](images/image-20200407135738403.png)
 
 ### Repository
 
@@ -148,7 +148,7 @@ Agent trained with MA-DDPG  with experience replay solved the environment in 104
 
 ##### MADDPG with  Experience Replay
 
-![image-20200414084241521](\images\image-20200414084241521.png)
+![image-20200414084241521](images/image-20200414084241521.png)
 
 
 
